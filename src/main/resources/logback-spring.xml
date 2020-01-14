@@ -4,7 +4,7 @@
     <springProfile name="default">
         <springProperty name="LOG_DIR" source="logging.path"/>
         <springProperty name="LOG_NAME" source="logging.file"/>
-        <springProperty name="MAX_FILE_SIZE" source="logging.max-file-size"/>
+        <springProperty name="MAX_FILE_SIZE" source="logging.file.max-size"/>
 
         <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <file>${LOG_DIR}/${LOG_NAME}.log</file>

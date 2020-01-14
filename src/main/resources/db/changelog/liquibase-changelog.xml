@@ -1,0 +1,35 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+
+        logicalFilePath="db/changelog/0.0.x/0.0.x.xml"
+
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+        ">
+
+    <!-- Create database tag -->
+    <changeSet id="0.0.x-1" author="p1nkZebra">
+        <tagDatabase tag="0.0.x"/>
+    </changeSet>
+
+    <!-- Create Property table -->
+    <changeSet id="0.0.x-2" author="p1nkZebra">
+        <createTable tableName="PROJECT_PROPERTY">
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints
+                        nullable="false"
+                        unique="true"/>
+            </column>
+            <column name="VALUE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <include file="1.0.x/main.xml" relativeToChangelogFile="true"/>
+    <!--<include file="1.1.x/main.xml" relativeToChangelogFile="true"/>-->
+
+</databaseChangeLog>

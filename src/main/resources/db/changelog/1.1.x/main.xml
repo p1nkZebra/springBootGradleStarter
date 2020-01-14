@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+
+        logicalFilePath="db/changelog/1.1.x/main.xml"
+
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+
+    <!-- Create database tag -->
+    <changeSet id="1.1.x-1" author="p1nkZebra">
+        <tagDatabase tag="1.1.x"/>
+    </changeSet>
+
+
+    <include file="JIRA_task_3/_.xml" relativeToChangelogFile="true"/>
+
+
+</databaseChangeLog>

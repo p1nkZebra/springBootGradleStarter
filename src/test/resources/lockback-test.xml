@@ -1,4 +1,5 @@
 <configuration debug="true">
+
     <!-- appenders -->
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -8,15 +9,12 @@
         </encoder>
     </appender>
 
-    <!-- loggers -->
 
+
+    <!-- loggers -->
 
     <logger name="com.company" level="all"/>
     <!--<logger name="org.springframework.web" level="debug"/>-->
-    <!--<logger name="org.springframework.jdbc" level="all"/>-->
-    <!--<logger name="org.springframework.data" level="all"/>-->
-    <!--<logger name="org.springframework" level="info"/>-->
-    <!--<logger name="org.springframework.web" level="all"/>-->
 
     <root level="off">
         <appender-ref ref="STDOUT"/>

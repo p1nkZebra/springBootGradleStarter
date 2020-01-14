@@ -21,7 +21,7 @@ public class SwaggerConfig {
     @Bean
     public Docket configureDocs() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis((RequestHandlerSelectors.basePackage("com.company.springBootTemplate.web"))).build()
+                .apis((RequestHandlerSelectors.basePackage("com.company.springBootTemplate.controller"))).build()
                 .apiInfo(apiInfo("1.0-SNAPSHOT"))
                 .tags(new Tag("Hello controller", "Primitive controller just to check the application state"));
     }
