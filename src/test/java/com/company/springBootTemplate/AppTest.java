@@ -1,4 +1,4 @@
-package hello;
+package com.company.springBootTemplate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 @AutoConfigureMockMvc
@@ -21,10 +22,10 @@ public class AppTest {
     private MockMvc mvc;
 
     @Test
-    public void helloGradle() throws Exception {
-        mvc.perform(get("/"))
+    public void hello_page_test() throws Exception {
+        mvc.perform(get("/template-app-api/hello"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello Gradle!"));
+                .andExpect(content().string("Hello page for Spring Boot Template App"));
     }
 
 }
