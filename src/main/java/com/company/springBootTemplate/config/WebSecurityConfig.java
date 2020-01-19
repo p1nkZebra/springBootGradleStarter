@@ -1,9 +1,9 @@
 //package com.company.springBootTemplate.config;
 //
-//import com.company.springBootTemplate.domain.GoogleAccountUser;
-//import com.company.springBootTemplate.repository.UserRepository;
-//import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
-//import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
+////import com.company.springBootTemplate.domain.GoogleAccountUser;
+////import com.company.springBootTemplate.repository.UserRepository;
+////import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+////import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
