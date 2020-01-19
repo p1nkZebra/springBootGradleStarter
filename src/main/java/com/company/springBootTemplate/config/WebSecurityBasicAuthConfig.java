@@ -22,8 +22,10 @@ public class WebSecurityBasicAuthConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                     .disable()
                 .authorizeRequests()
-                    .antMatchers("/security/admin").hasRole("ADMIN")
-                    .antMatchers("/security/any").hasAnyRole("ADMIN", "USER")
+//                    .antMatchers("/security/admin").hasRole("ADMIN")
+//                    .antMatchers("/security/any").hasAnyRole("ADMIN", "USER")
+                    .antMatchers("/security/admin").hasAnyAuthority("ADMIN_SECTION")
+                    .antMatchers("/security/any").hasAnyAuthority("USER_SECTION", "ADMIN_SECTION")
 //                    .antMatchers("/**").authenticated()
                     .antMatchers("/**").permitAll()
                 .and()
@@ -37,10 +39,12 @@ public class WebSecurityBasicAuthConfig extends WebSecurityConfigurerAdapter {
                     .withUser("user")
                     .password(passwordEncoder().encode("123"))
                     .roles("USER")
+                    .authorities("USER_SECTION")
                 .and()
                     .withUser("admin")
                     .password(passwordEncoder().encode("456"))
-                    .roles("ADMIN");
+                    .roles("ADMIN")
+                    .authorities("USER_SECTION", "ADMIN_SECTION");
     }
 
     @Bean
