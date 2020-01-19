@@ -1,15 +1,80 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
 
-        logicalFilePath="db/changelog/1.0.x/JIRA_task_2/_.xml"
+        logicalFilePath="db/changelog/0.0.x/JIRA.task.1/_.xml"
 
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="
             http://www.liquibase.org/xml/ns/dbchangelog
-            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet id="JIRA_task_2-1" author="p1nkZebra">
+    <changeSet id="JIRA.task.1-1" author="p1nkZebra">
+        <createTable tableName="template_author">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints
+                        primaryKey="true"
+                        nullable="false"/>
+            </column>
+            <column name="author_name" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_age" type="BIGINT"/>
+        </createTable>
+    </changeSet>
 
+    <changeSet id="JIRA.task.1-2" author="p1nkZebra">
+        <insert tableName="template_author">
+            <column name="author_name" value="Mike"/>
+            <column name="author_age" value="25"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="JIRA.task.1-3" author="p1nkZebra">
+        <insert tableName="template_author">
+            <column name="author_name" value="Julia"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="JIRA.task.1-4" author="p1nkZebra">
+        <createTable tableName="template_message">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints
+                        primaryKey="true"
+                        nullable="false"/>
+            </column>
+            <column name = "author_id" type="BIGINT">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="fk_author_id"
+                        referencedTableName="template_author"
+                        referencedColumnNames="id"
+                />
+            </column>
+            <column name="message_text" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="JIRA.task.1-5" author="p1nkZebra">
+        <insert tableName="template_message">
+            <column name="author_id" value="1"/>
+            <column name="message_text" value="First test message from Mike"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="JIRA.task.1-6" author="p1nkZebra">
+        <insert tableName="template_message">
+            <column name="author_id" value="1"/>
+            <column name="message_text" value="Second test message from Mike"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="JIRA.task.1-7" author="p1nkZebra">
+        <insert tableName="template_message">
+            <column name="author_id" value="2"/>
+            <column name="message_text" value="First test message from Julia"/>
+        </insert>
     </changeSet>
 
 

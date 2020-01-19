@@ -23,7 +23,11 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis((RequestHandlerSelectors.basePackage("com.company.springBootTemplate.controller"))).build()
                 .apiInfo(apiInfo("1.0-SNAPSHOT"))
-                .tags(new Tag("Hello controller", "Primitive controller just to check the application state"));
+                .tags(
+                        new Tag("Hello controller", "Primitive controller just to check the application state"),
+                        new Tag("Author REST controller", "REST controller with GET, POST, PUT and DELETE methods"),
+                        new Tag("Message REST controller", "REST controller with GET, POST, PUT and DELETE methods")
+                );
     }
 
     private ApiInfo apiInfo(String version) {

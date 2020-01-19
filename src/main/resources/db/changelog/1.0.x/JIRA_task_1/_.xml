@@ -6,16 +6,17 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="
             http://www.liquibase.org/xml/ns/dbchangelog
-            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
     <changeSet id="JIRA_task_1-1" author="p1nkZebra">
-        <createTable tableName="google_auth_user">
-            <column name="ID" type="BIGINT" autoIncrement="true"  >
+        <createTable schemaName="PUBLIC"
+                     tableName="google_auth_user">
+            <column name="id" type="VARCHAR(100)">
                 <constraints
                         primaryKey="true"
                         nullable="false"/>
             </column>
-            <column name="NAME" type="VARCHAR(200)">
+            <column name="name" type="VARCHAR(200)">
                 <constraints nullable="false"/>
             </column>
             <column name="userpic" type="VARCHAR(200)">
@@ -25,7 +26,8 @@
                 <constraints nullable="false"/>
             </column>
             <column name="gender" type="VARCHAR(50)"/>
-            <column name="locale" type="VARCHAR(10)">
+            <column name="locale" type="VARCHAR(10)"/>
+            <column name="last_visit" type="timestamp">
                 <constraints nullable="false"/>
             </column>
         </createTable>

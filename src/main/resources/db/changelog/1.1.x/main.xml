@@ -15,7 +15,7 @@
     </changeSet>
 
 
-    <include file="JIRA_task_3/_.xml" relativeToChangelogFile="true"/>
+    <include file="JIRA.task.3/_.xml" relativeToChangelogFile="true"/>
 
 
 </databaseChangeLog>

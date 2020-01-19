@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'idea'
+    id 'war'
     id 'org.springframework.boot' version '2.0.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.7.RELEASE'
 }
@@ -7,50 +9,37 @@ plugins {
 group 'test.grdl'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'war'
+
+war {
+    enabled=true
+}
+
+bootWar{
+    mainClassName = 'com.company.springBootTemplate.App'
+}
 
 bootJar {
     mainClassName = 'com.company.springBootTemplate.App'
 }
 
-sourceCompatibility = 1.8
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-security')
-    compile('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.0.RELEASE')
-
-    compile('com.h2database:h2')
-
-    compile group: 'org.liquibase', name: 'liquibase-core', version: '3.8.5'
-
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
-
-    compile group: 'log4j', name: 'log4j', version: '1.2.17'
-
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
-//    testCompile group: 'com.h2database', name: 'h2', version: '1.4.200'
-
-
-    components {
-        withModule('org.springframework:spring-beans') {
-            allVariants {
-                withDependencyConstraints {
-                    // Need to patch constraints because snakeyaml is an optional dependency
-                    it.findAll { it.name == 'snakeyaml' }.each { it.version { strictly '1.19' } }
-                }
-            }
-        }
-    }
+if (hasProperty('profile')) {
+    apply from: rootProject.file("gradle/profile-${profile}.gradle");
+    println 'Using profile file: "' + "profile-${profile}.gradle" + '" for ' + project.getName()
+} else {
+    // Default when no profile property is specified
+    apply from: rootProject.file('gradle/profile.gradle');
+    println 'Using default profile file: "' + "profile.gradle" + '" for ' + project.getName()
 }
 
