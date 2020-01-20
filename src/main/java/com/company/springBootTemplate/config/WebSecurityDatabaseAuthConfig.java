@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-@Profile("databaseAuthAuth")
+@Profile("databaseAuth")
 @Configuration
 @EnableWebSecurity
 public class WebSecurityDatabaseAuthConfig extends WebSecurityConfigurerAdapter {
