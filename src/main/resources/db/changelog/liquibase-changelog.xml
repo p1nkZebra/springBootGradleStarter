@@ -30,6 +30,6 @@
 
 
     <include file="1.0.x/main.xml" relativeToChangelogFile="true"/>
-    <!--<include file="1.1.x/main.xml" relativeToChangelogFile="true"/>-->
+    <include file="1.1.x/main.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

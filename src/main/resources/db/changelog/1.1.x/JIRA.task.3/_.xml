@@ -1,0 +1,53 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+
+        logicalFilePath="db/changelog/1.1.x/JIRA_task_3/_.xml"
+
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="JIRA.task.3-1" author="p1nkZebra">
+        <createTable tableName="db_auth_user">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints
+                        primaryKey="true"
+                        nullable="false"/>
+            </column>
+            <column name="user_name" type="VARCHAR(200)">
+                <constraints nullable="false"
+                             unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="JIRA.task.3-2" author="p1nkZebra">
+        <insert tableName="db_auth_user">
+            <column name="user_name" value="db_user"/>
+            <column name="password" value="$2a$10$mlCoG3YPxPHCe7Mzr0Ma8uXzRFIUr7AnwWJ//eX75MxRFtdTj5In."/>
+            <column name="is_active" value="true"/>
+            <column name="roles" value="USER"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="JIRA.task.3-3" author="p1nkZebra">
+        <insert tableName="db_auth_user">
+            <column name="user_name" value="db_admin"/>
+            <column name="password" value="$2a$10$8xBoP83gmBnfYw9j2.70Mernr8KMbEQc7BAini1quh7MGGiA7BH2a"/>
+            <column name="is_active" value="true"/>
+            <column name="roles" value="USER,ADMIN"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
