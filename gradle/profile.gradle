@@ -10,10 +10,7 @@ dependencies {
     compile("org.springframework.security:spring-security-ldap")
     compile("org.springframework:spring-tx")
     compile("com.unboundid:unboundid-ldapsdk")
-
-
-//    compile('org.springframework.boot:spring-boot-starter-security')
-//    compile('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.0.RELEASE')
+    compile('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.0.RELEASE')
 
     compile('com.h2database:h2')
     compile group: 'org.liquibase', name: 'liquibase-core', version: '3.8.5'
