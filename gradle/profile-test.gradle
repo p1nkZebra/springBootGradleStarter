@@ -1,18 +1,5 @@
 println 'Using profile: TEST'
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
 
-    compile('com.h2database:h2')
-    compile group: 'org.liquibase', name: 'liquibase-core', version: '3.8.5'
-
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
-
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
 }

@@ -1,4 +1,4 @@
-package com.company.springBootTemplate.controller;
+package com.company.springBootTemplate.controller.swagger;
 
 
 import com.company.springBootTemplate.domain.TemplateMessage;
