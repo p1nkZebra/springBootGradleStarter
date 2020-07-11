@@ -1,8 +1,10 @@
 package com.company.springBootTemplate.service;
 
 
+import com.company.springBootTemplate.domain.TemplateAuthor;
 import com.company.springBootTemplate.domain.TemplateMessage;
 import com.company.springBootTemplate.infrastructure.exception.NotFoundException;
+import com.company.springBootTemplate.repository.AuthorRepository;
 import com.company.springBootTemplate.repository.MessageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,16 +13,20 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MessageService {
     private final static Logger LOG = LoggerFactory.getLogger(MessageService.class);
 
     private final MessageRepository messageRepository;
+    private final AuthorRepository authorRepository;
 
     @Autowired
-    public MessageService(MessageRepository messageRepository) {
+    public MessageService(MessageRepository messageRepository,
+                          AuthorRepository authorRepository) {
         this.messageRepository = messageRepository;
+        this.authorRepository = authorRepository;
     }
 
 
@@ -39,6 +45,9 @@ public class MessageService {
 
 
     public TemplateMessage saveNewMessage(TemplateMessage message) {
+        TemplateAuthor author = authorRepository.findById(message.getAuthorId()).orElseThrow(
+                () -> new NotFoundException(String.format("Author with id: %s not found", message.getAuthorId())));
+        message.setAuthor(author);
         return messageRepository.save(message);
     }
 

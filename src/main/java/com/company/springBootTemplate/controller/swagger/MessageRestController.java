@@ -51,6 +51,7 @@ public class MessageRestController {
     @PostMapping("/add-message")
     public List<TemplateMessage> addTemplateMessage(@RequestBody TemplateMessage message) {
         LOG.info("Called URL: /rest-api/add-message with requestBody: {}", message);
+
         messageService.saveNewMessage(message);
         return messageService.getAllMessages();
     }

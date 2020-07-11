@@ -16,36 +16,36 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityBasicAuthConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf()
-                    .disable()
-                .authorizeRequests()
-//                    .antMatchers("/security/admin").hasRole("ADMIN")
-//                    .antMatchers("/security/any").hasAnyRole("ADMIN", "USER")
-                    .antMatchers("/security/admin").hasAnyAuthority("ADMIN_SECTION")
-                    .antMatchers("/security/any").hasAnyAuthority("USER_SECTION", "ADMIN_SECTION")
-//                    .antMatchers("/**").authenticated()
-                    .antMatchers("/**").permitAll()
-                .and()
-                    .httpBasic();
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .csrf()
+//                    .disable()
+//                .authorizeRequests()
+////                    .antMatchers("/security/admin").hasRole("ADMIN")
+////                    .antMatchers("/security/any").hasAnyRole("ADMIN", "USER")
+//                    .antMatchers("/security/admin").hasAnyAuthority("ADMIN_SECTION")
+//                    .antMatchers("/security/any").hasAnyAuthority("USER_SECTION", "ADMIN_SECTION")
+////                    .antMatchers("/**").authenticated()
+//                    .antMatchers("/**").permitAll()
+//                .and()
+//                    .httpBasic();
+//    }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                    .withUser("user")
-                    .password(passwordEncoder().encode("123"))
-                    .roles("USER")
-                    .authorities("USER_SECTION")
-                .and()
-                    .withUser("admin")
-                    .password(passwordEncoder().encode("456"))
-                    .roles("ADMIN")
-                    .authorities("USER_SECTION", "ADMIN_SECTION");
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .inMemoryAuthentication()
+//                    .withUser("user")
+//                    .password(passwordEncoder().encode("123"))
+//                    .roles("USER")
+//                    .authorities("USER_SECTION")
+//                .and()
+//                    .withUser("admin")
+//                    .password(passwordEncoder().encode("456"))
+//                    .roles("ADMIN")
+//                    .authorities("USER_SECTION", "ADMIN_SECTION");
+//    }
 
     @Bean
     PasswordEncoder passwordEncoder() {

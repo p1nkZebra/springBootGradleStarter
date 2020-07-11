@@ -49,5 +49,13 @@ public class TemplateMessage {
     public void setText(String text) {
         this.text = text;
     }
+
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
 }
 
